@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>OpenCV Processing Book</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+   <script type="text/javascript" src="theme/html/javascripts/disqus.js"> </script>
+
+   <link rel="stylesheet" href="theme/html/stylesheets/atlas.css"/>
+
+
+  </head>
+
+  <body data-type="book">
+
+    <div class="navbar navbar-fixed-top" role="navigation">	
+      <div class="container">
+        <div class="navbar-header">	
+	  <img class="logo" src="theme/html/assets/logo-white.svg"/>
+          <a class="title" href="#">OpenCV Processing Book</a>
+        </div>
+
+	<div id="slideout">
+	    <span class="toc-control fa fa-bars"/>
+	    <div id="slideout_inner">
+		 <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+	            <div class="input-group-btn">
+	               <button class="btn btn-default search-button" type="submit"><span class="fa fa-search"/></button>
+	            </div>
+	         </div>   
+	        <h2>Contents</h2>
+	        <nav data-type="toc" id="idp79408"><ol><li data-type="part"><a href="part01.html#idp347184">World of Filters</a></li><li data-type="chapter"><a href="ch01.html#idm389856">Basic Output</a></li><li data-type="chapter"><a href="ch02.html#idm1280752">Blur</a><ol>
+
+
+
+
+<li data-type="sect1"><a href="ch02.html#idp407840">Blur Strength and Direction - Convolutions and Kernels</a><ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-type="sect2"><a href="ch02.html#idp700224">Color Images</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch02.html#idp403152">Parameters</a></li>
+<li data-type="sect1"><a href="ch02.html#idp709808">Related Functions</a></li>
+</ol></li><li data-type="chapter"><a href="ch03.html#idp713632">Brightness and Contrast</a></li><li data-type="chapter"><a href="ch04.html#idp714704">Dilate and Erode</a></li><li data-type="chapter"><a href="ch05.html#idp715280">Edge Detection</a><ol>
+
+
+
+<li data-type="sect1"><a href="ch05.html#idp732816">Canny Edge Detection</a></li>
+<li data-type="sect1"><a href="ch05.html#idp731520">Sobel Edge Detection</a><ol>
+
+
+
+
+<li data-type="sect2"><a href="ch05.html#idp718848">Parameters</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch05.html#idp740544">Scharr Edge Detection</a></li>
+</ol></li><li data-type="chapter"><a href="ch06.html#idp745248">Histogram Equalization</a></li><li data-type="chapter"><a href="ch07.html#idp755280">In Range</a><ol>
+
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch07.html#idp769360">Use with Color Images and the Hue Channel</a></li>
+<li data-type="sect1"><a href="ch07.html#idp772880">Parameters</a></li>
+<li data-type="sect1"><a href="ch07.html#idp774944">Related Material</a></li>
+</ol></li><li data-type="chapter"><a href="ch08.html#idp757344">Region of Interest</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch08.html#idp789712">Combined with Histogram Equalization</a></li>
+<li data-type="sect1"><a href="ch08.html#idp794320">Parameters</a></li>
+</ol></li><li data-type="chapter"><a href="ch09.html#idp795456">Threshold</a><ol>
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch09.html#idp799520">Related Functions</a></li>
+<li data-type="sect1"><a href="ch09.html#idp804064">Parameters</a></li>
+<li data-type="sect1"><a href="ch09.html#idp806768">Code</a></li>
+</ol></li><li data-type="chapter"><a href="ch10.html#idp808848">Adaptive Threshold</a><ol>
+
+
+<li data-type="sect1"><a href="ch10.html#idp809728">Related Functions</a></li>
+</ol></li></ol></nav>
+	    </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <section data-type="chapter" data-pdf-bookmark="Chapter 8. Region of Interest" id="idp757344">
+<h1>Region of Interest</h1>
+
+<p><img src="http://gregborenstein.com/assets/opencv/region_of_interest.gif" width="400px"/></p>
+<p>When filtering images, sometimes we don’t want to apply our filters to the entire image. Sometimes we’d rather select a particular area of the image just filter it. Maybe we only care about a feature if it appears in a particular spot. Or maybe we’re running filtering operations that will have different results depending on their input (like we just saw above with histogram equalization).</p>
+<p>OpenCV lets us select a Region of Interest (ROI) in order to do just that. After we set our ROI, subsequent filters will only apply to that area. In the GIF above you can see our threshold filter applied just to the area around the actors face.</p>
+<section data-type="sect1" data-pdf-bookmark="Combined with Histogram Equalization" id="idp789712">
+<h1>Combined with Histogram Equalization</h1>
+
+<p><img src="http://gregborenstein.com/assets/opencv/roi_histogram.gif" width="400px"/></p>
+<p>As we saw, the effects of histogram equalization depend on the range of grays in the image being processed. Our original frame scans have a wide range of gray values and therefore the filter had little effect. But, if we select the right Region of Interest, histogram equalization can really help us bring out the sprocket holes.</p>
+<p>In the GIF above, I’ve selected a small square on the right as an ROI. This area captures the edge of the frame and one of the sprocket holes. Unlike our earlier attempt on the whole image, running histogram equalization on just this area has a dramatic effect. It significantly darkens the edges of the sprocket hole making it much easier to detect.</p>
+<p>Using an ROI like this, makes our image filters work a little bit more like our eyes, which are constantly refocusing and re-adjusting to different objects and light conditions in front of us.</p>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Parameters" id="idp794320">
+<h1>Parameters</h1>
+
+<p>A Region of Interest is a rectangular area of the image we select to exclusively receive OpenCV operations. Hence, the arguments to <code>setROI()</code> mirror those to <code>rect()</code>, the Processing function for drawing rectangles: x, y, width, height.</p>
+<pre data-type="programlisting">opencv.setROI(400,250,150,150);
+opencv.threshold(50);</pre>
+<p><em>Note: there’s also a corresponding <code>opencv.releaseROI()</code> function that ends the use of the Region of Interest. After calling it, further OpenCV functions will affect the entire image.</em></p>
+</section>
+</section>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+	<div class="row">
+	  <div class="pagination">
+	      <ul>
+	        <li class="prev"><span class="fa fa-chevron-left"/> <a href="ch07.html">Previous</a></li>
+	        <li class="next"><a href="ch09.html">Next</a> <span class="fa fa-chevron-right"/></li>
+	      </ul>
+	  </div>       
+	</div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12 disqus">
+	     <div id="disqus_thread"/>
+	   </div>
+       </div>
+    </div>
+ 
+    <div class="footer">
+      <footer>
+        <p>© O'Reilly Media, 2014</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

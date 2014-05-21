@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>OpenCV Processing Book</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+   <script type="text/javascript" src="theme/html/javascripts/disqus.js"> </script>
+
+   <link rel="stylesheet" href="theme/html/stylesheets/atlas.css"/>
+
+
+  </head>
+
+  <body data-type="book">
+
+    <div class="navbar navbar-fixed-top" role="navigation">	
+      <div class="container">
+        <div class="navbar-header">	
+	  <img class="logo" src="theme/html/assets/logo-white.svg"/>
+          <a class="title" href="#">OpenCV Processing Book</a>
+        </div>
+
+	<div id="slideout">
+	    <span class="toc-control fa fa-bars"/>
+	    <div id="slideout_inner">
+		 <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+	            <div class="input-group-btn">
+	               <button class="btn btn-default search-button" type="submit"><span class="fa fa-search"/></button>
+	            </div>
+	         </div>   
+	        <h2>Contents</h2>
+	        <nav data-type="toc" id="idp79408"><ol><li data-type="part"><a href="part01.html#idp347184">World of Filters</a></li><li data-type="chapter"><a href="ch01.html#idm389856">Basic Output</a></li><li data-type="chapter"><a href="ch02.html#idm1280752">Blur</a><ol>
+
+
+
+
+<li data-type="sect1"><a href="ch02.html#idp407840">Blur Strength and Direction - Convolutions and Kernels</a><ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-type="sect2"><a href="ch02.html#idp700224">Color Images</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch02.html#idp403152">Parameters</a></li>
+<li data-type="sect1"><a href="ch02.html#idp709808">Related Functions</a></li>
+</ol></li><li data-type="chapter"><a href="ch03.html#idp713632">Brightness and Contrast</a></li><li data-type="chapter"><a href="ch04.html#idp714704">Dilate and Erode</a></li><li data-type="chapter"><a href="ch05.html#idp715280">Edge Detection</a><ol>
+
+
+
+<li data-type="sect1"><a href="ch05.html#idp732816">Canny Edge Detection</a></li>
+<li data-type="sect1"><a href="ch05.html#idp731520">Sobel Edge Detection</a><ol>
+
+
+
+
+<li data-type="sect2"><a href="ch05.html#idp718848">Parameters</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch05.html#idp740544">Scharr Edge Detection</a></li>
+</ol></li><li data-type="chapter"><a href="ch06.html#idp745248">Histogram Equalization</a></li><li data-type="chapter"><a href="ch07.html#idp755280">In Range</a><ol>
+
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch07.html#idp769360">Use with Color Images and the Hue Channel</a></li>
+<li data-type="sect1"><a href="ch07.html#idp772880">Parameters</a></li>
+<li data-type="sect1"><a href="ch07.html#idp774944">Related Material</a></li>
+</ol></li><li data-type="chapter"><a href="ch08.html#idp757344">Region of Interest</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch08.html#idp789712">Combined with Histogram Equalization</a></li>
+<li data-type="sect1"><a href="ch08.html#idp794320">Parameters</a></li>
+</ol></li><li data-type="chapter"><a href="ch09.html#idp795456">Threshold</a><ol>
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch09.html#idp799520">Related Functions</a></li>
+<li data-type="sect1"><a href="ch09.html#idp804064">Parameters</a></li>
+<li data-type="sect1"><a href="ch09.html#idp806768">Code</a></li>
+</ol></li><li data-type="chapter"><a href="ch10.html#idp808848">Adaptive Threshold</a><ol>
+
+
+<li data-type="sect1"><a href="ch10.html#idp809728">Related Functions</a></li>
+</ol></li></ol></nav>
+	    </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <section data-type="chapter" data-pdf-bookmark="Chapter 6. Histogram Equalization" id="idp745248">
+<h1>Histogram Equalization</h1>
+
+<p>You’ve probably seen histograms used to represent information about images in photo editing applications like Photoshop. Histograms show the amount of pixels at each different level of brightness in a complete image or in a particular color channel.</p>
+<p>The following illustration shows four histograms for a picture of me: one for brightness (shown in gray) and one each for the red, green, and blue channels.</p>
+<p><a href="http://www.flickr.com/photos/unavoidablegrain/9174190443/" title="gray, red, green, blue histograms by atduskgreg, on Flickr"><img src="http://farm8.staticflickr.com/7287/9174190443_224a740ce8.jpg" width="500" height="355" alt="gray, red, green, blue histograms"/></a></p>
+<p>Taller regions of the histogram mean that there are more pixels in the image at that level of brightness. Looking at the histograms for this image we can see that it is pretty dark; there are no lines on the rightmost side of any of the histograms where the brightest pixels are represented. You can also see that the red histogram is taller than the green and blue ones. This reflects how much of the image is taken up with my pink-ish face and the red and purple hues of the print on the wall behind me.</p>
+<p>Manipulating this distribution of pixels is a powerful way to change to brightness and contrast of an image. Specifically, OpenCV provides us with a function to “equalize” the histogram. Equalizing a histogram takes its values and spreads them out over the full possible range. Here’s the result when we run it on our scanned film frame:</p>
+<p><img src="http://gregborenstein.com/assets/opencv/equalize_histogram.gif" width="400px"/></p>
+<p>Kind of disappointing, huh? The image is certainly brighter. And, if we look closely, we can see that certain areas have significantly more detail visible (especially the lower partial frame).</p>
+<p>However, if we look at the actual histogram for this image, we can see the effect of equalizing it:</p>
+<p><img src="http://gregborenstein.com/assets/opencv/equalized_histograph.gif" width="600px"/></p>
+<p>The values of the graph are shifted significantly towards the right, or brighter, side. The equalization had relatively little visible effect because this image was pretty evenly exposed to begin with. Between the dark black of the frame separators, the bright white of the sprocket holes, and the smooth grays of the frame itself, the original scan covered the full range of the histogram.</p>
+<p>Let’s look at what histogram equalization does to that badly underexposed image of me from before.</p>
+<p><img src="http://gregborenstein.com/assets/opencv/greg_histograph.gif" width="600px"/></p>
+<p>Now, here you can see real results. The image is much brighter and much higher contrast. If we select the right input, histogram equalization can make things much more visible, especially in woefully under or overexposed images.</p>
+</section>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+	<div class="row">
+	  <div class="pagination">
+	      <ul>
+	        <li class="prev"><span class="fa fa-chevron-left"/> <a href="ch05.html">Previous</a></li>
+	        <li class="next"><a href="ch07.html">Next</a> <span class="fa fa-chevron-right"/></li>
+	      </ul>
+	  </div>       
+	</div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12 disqus">
+	     <div id="disqus_thread"/>
+	   </div>
+       </div>
+    </div>
+ 
+    <div class="footer">
+      <footer>
+        <p>© O'Reilly Media, 2014</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

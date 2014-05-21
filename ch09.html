@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>OpenCV Processing Book</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+   <script type="text/javascript" src="theme/html/javascripts/disqus.js"> </script>
+
+   <link rel="stylesheet" href="theme/html/stylesheets/atlas.css"/>
+
+
+  </head>
+
+  <body data-type="book">
+
+    <div class="navbar navbar-fixed-top" role="navigation">	
+      <div class="container">
+        <div class="navbar-header">	
+	  <img class="logo" src="theme/html/assets/logo-white.svg"/>
+          <a class="title" href="#">OpenCV Processing Book</a>
+        </div>
+
+	<div id="slideout">
+	    <span class="toc-control fa fa-bars"/>
+	    <div id="slideout_inner">
+		 <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+	            <div class="input-group-btn">
+	               <button class="btn btn-default search-button" type="submit"><span class="fa fa-search"/></button>
+	            </div>
+	         </div>   
+	        <h2>Contents</h2>
+	        <nav data-type="toc" id="idp79408"><ol><li data-type="part"><a href="part01.html#idp347184">World of Filters</a></li><li data-type="chapter"><a href="ch01.html#idm389856">Basic Output</a></li><li data-type="chapter"><a href="ch02.html#idm1280752">Blur</a><ol>
+
+
+
+
+<li data-type="sect1"><a href="ch02.html#idp407840">Blur Strength and Direction - Convolutions and Kernels</a><ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-type="sect2"><a href="ch02.html#idp700224">Color Images</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch02.html#idp403152">Parameters</a></li>
+<li data-type="sect1"><a href="ch02.html#idp709808">Related Functions</a></li>
+</ol></li><li data-type="chapter"><a href="ch03.html#idp713632">Brightness and Contrast</a></li><li data-type="chapter"><a href="ch04.html#idp714704">Dilate and Erode</a></li><li data-type="chapter"><a href="ch05.html#idp715280">Edge Detection</a><ol>
+
+
+
+<li data-type="sect1"><a href="ch05.html#idp732816">Canny Edge Detection</a></li>
+<li data-type="sect1"><a href="ch05.html#idp731520">Sobel Edge Detection</a><ol>
+
+
+
+
+<li data-type="sect2"><a href="ch05.html#idp718848">Parameters</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch05.html#idp740544">Scharr Edge Detection</a></li>
+</ol></li><li data-type="chapter"><a href="ch06.html#idp745248">Histogram Equalization</a></li><li data-type="chapter"><a href="ch07.html#idp755280">In Range</a><ol>
+
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch07.html#idp769360">Use with Color Images and the Hue Channel</a></li>
+<li data-type="sect1"><a href="ch07.html#idp772880">Parameters</a></li>
+<li data-type="sect1"><a href="ch07.html#idp774944">Related Material</a></li>
+</ol></li><li data-type="chapter"><a href="ch08.html#idp757344">Region of Interest</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch08.html#idp789712">Combined with Histogram Equalization</a></li>
+<li data-type="sect1"><a href="ch08.html#idp794320">Parameters</a></li>
+</ol></li><li data-type="chapter"><a href="ch09.html#idp795456">Threshold</a><ol>
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch09.html#idp799520">Related Functions</a></li>
+<li data-type="sect1"><a href="ch09.html#idp804064">Parameters</a></li>
+<li data-type="sect1"><a href="ch09.html#idp806768">Code</a></li>
+</ol></li><li data-type="chapter"><a href="ch10.html#idp808848">Adaptive Threshold</a><ol>
+
+
+<li data-type="sect1"><a href="ch10.html#idp809728">Related Functions</a></li>
+</ol></li></ol></nav>
+	    </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <section data-type="chapter" data-pdf-bookmark="Chapter 9. Threshold" id="idp795456">
+<h1>Threshold</h1>
+
+<p><img src="http://gregborenstein.com/assets/opencv/threshold.gif" width="400px"/></p>
+<p>Thresholding is maybe the single most common image filter used with OpenCV. It takes a grayscale image and converts it into a “binary” image: one where every pixel is either all-white or all-black based on whether it’s lighter or darker than the given threshold.</p>
+<p>Many super-useful OpenCV functions require a binary image, like <a href="https://github.com/atduskgreg/opencv-processing-book/blob/master/book/tracking/contours_and_lines.md">contour finding</a>.</p>
+<p>In the animated GIF above, we’re applying a threshold at 50 to a scanned frame of film from <a href="https://github.com/atduskgreg/opencv-processing-book/blob/master/book/projects/kinograph_1.md">the Kinograph project</a>. When we threshold our scan, the subtle grays that make up the area with the sprocket holes on the right of the frame disappear completely into white. And the black bars of the frame separators become even more prominent.</p>
+<p>Thresholding is not limited to grayscale images. You can apply it to color images and individual color channels as well (see the code samples below).</p>
+<section data-type="sect1" data-pdf-bookmark="Related Functions" id="idp799520">
+<h1>Related Functions</h1>
+
+<ul>
+<li><a href="https://github.com/atduskgreg/opencv-processing-book/blob/master/book/filters/adaptive_threshold.md">adaptiveThreshold()</a></li>
+<li><a href="https://github.com/atduskgreg/opencv-processing-book/blob/master/book/filters/in_range.md">inRange()</a></li>
+</ul>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Parameters" id="idp804064">
+<h1>Parameters</h1>
+
+<p>The <code>threshold()</code> function takes a single argument: an integer value from 0-255:</p>
+<pre data-type="programlisting">opencv.threshold(50);</pre>
+<p>This value represents a value of gray (0 being black and 255 white). After <code>threshold()</code> is applied, pixels below this value will be black and those above it will be white.</p>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Code" id="idp806768">
+<h1>Code</h1>
+
+</section>
+</section>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+	<div class="row">
+	  <div class="pagination">
+	      <ul>
+	        <li class="prev"><span class="fa fa-chevron-left"/> <a href="ch08.html">Previous</a></li>
+	        <li class="next"><a href="ch10.html">Next</a> <span class="fa fa-chevron-right"/></li>
+	      </ul>
+	  </div>       
+	</div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12 disqus">
+	     <div id="disqus_thread"/>
+	   </div>
+       </div>
+    </div>
+ 
+    <div class="footer">
+      <footer>
+        <p>© O'Reilly Media, 2014</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

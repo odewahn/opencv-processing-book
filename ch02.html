@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>OpenCV Processing Book</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+   <script type="text/javascript" src="theme/html/javascripts/disqus.js"> </script>
+
+   <link rel="stylesheet" href="theme/html/stylesheets/atlas.css"/>
+
+
+  </head>
+
+  <body data-type="book">
+
+    <div class="navbar navbar-fixed-top" role="navigation">	
+      <div class="container">
+        <div class="navbar-header">	
+	  <img class="logo" src="theme/html/assets/logo-white.svg"/>
+          <a class="title" href="#">OpenCV Processing Book</a>
+        </div>
+
+	<div id="slideout">
+	    <span class="toc-control fa fa-bars"/>
+	    <div id="slideout_inner">
+		 <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+	            <div class="input-group-btn">
+	               <button class="btn btn-default search-button" type="submit"><span class="fa fa-search"/></button>
+	            </div>
+	         </div>   
+	        <h2>Contents</h2>
+	        <nav data-type="toc" id="idp79408"><ol><li data-type="part"><a href="part01.html#idp347184">World of Filters</a></li><li data-type="chapter"><a href="ch01.html#idm389856">Basic Output</a></li><li data-type="chapter"><a href="ch02.html#idm1280752">Blur</a><ol>
+
+
+
+
+<li data-type="sect1"><a href="ch02.html#idp407840">Blur Strength and Direction - Convolutions and Kernels</a><ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-type="sect2"><a href="ch02.html#idp700224">Color Images</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch02.html#idp403152">Parameters</a></li>
+<li data-type="sect1"><a href="ch02.html#idp709808">Related Functions</a></li>
+</ol></li><li data-type="chapter"><a href="ch03.html#idp713632">Brightness and Contrast</a></li><li data-type="chapter"><a href="ch04.html#idp714704">Dilate and Erode</a></li><li data-type="chapter"><a href="ch05.html#idp715280">Edge Detection</a><ol>
+
+
+
+<li data-type="sect1"><a href="ch05.html#idp732816">Canny Edge Detection</a></li>
+<li data-type="sect1"><a href="ch05.html#idp731520">Sobel Edge Detection</a><ol>
+
+
+
+
+<li data-type="sect2"><a href="ch05.html#idp718848">Parameters</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch05.html#idp740544">Scharr Edge Detection</a></li>
+</ol></li><li data-type="chapter"><a href="ch06.html#idp745248">Histogram Equalization</a></li><li data-type="chapter"><a href="ch07.html#idp755280">In Range</a><ol>
+
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch07.html#idp769360">Use with Color Images and the Hue Channel</a></li>
+<li data-type="sect1"><a href="ch07.html#idp772880">Parameters</a></li>
+<li data-type="sect1"><a href="ch07.html#idp774944">Related Material</a></li>
+</ol></li><li data-type="chapter"><a href="ch08.html#idp757344">Region of Interest</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch08.html#idp789712">Combined with Histogram Equalization</a></li>
+<li data-type="sect1"><a href="ch08.html#idp794320">Parameters</a></li>
+</ol></li><li data-type="chapter"><a href="ch09.html#idp795456">Threshold</a><ol>
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch09.html#idp799520">Related Functions</a></li>
+<li data-type="sect1"><a href="ch09.html#idp804064">Parameters</a></li>
+<li data-type="sect1"><a href="ch09.html#idp806768">Code</a></li>
+</ol></li><li data-type="chapter"><a href="ch10.html#idp808848">Adaptive Threshold</a><ol>
+
+
+<li data-type="sect1"><a href="ch10.html#idp809728">Related Functions</a></li>
+</ol></li></ol></nav>
+	    </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <section data-type="chapter" data-pdf-bookmark="Chapter 2. Blur" id="idm1280752">
+<h1>Blur</h1>
+
+<p><img src="http://gregborenstein.com/assets/opencv/blur_gray.gif" width="500px"/></p>
+<p>Blurring is a surprisingly useful operation in computer vision. It might seem like blurring an image would obscure exactly the information that you’re seeking to extract. To the contrary, blurring is similar to taking an average: it combines the value of each pixel with its neighbors. This is really useful for eliminating small variations or noise that might hurt the results of other operations like edge detection, contour finding, etc.</p>
+<section data-type="sect1" data-pdf-bookmark="Blur Strength and Direction - Convolutions and Kernels" id="idp407840">
+<h1>Blur Strength and Direction - Convolutions and Kernels</h1>
+
+<p>OpenCV’s <code>blur()</code> function uses a type of blur known as a “box blur”. In order to understand its effects -- and the various options available when applying a blur -- you’ll need to know a little bit about how OpenCV applies blurs and other image filters.</p>
+<p>OpenCV blurs an image by applying what’s called <a href="http://en.wikipedia.org/wiki/Kernel_(image_processing">a Kernel</a>). A Kernel tells you how to change the value of any given pixel by combining it with different amounts of the neighboring pixels. The kernel is applied to every pixel in the image one-by-one to produce the final image (this operation known as a <a href="http://en.wikipedia.org/wiki/Convolution">convolution</a>).</p>
+<p>Kernels are frequently represented with diagrams like this:</p>
+<p><a href="http://www.flickr.com/photos/unavoidablegrain/9311189796/" title="no_blur_kernel by atduskgreg, on Flickr"><img src="http://farm8.staticflickr.com/7410/9311189796_af6a4234ff.jpg" width="250" height="250" alt="no_blur_kernel"/></a></p>
+<p>The middle box represents the current pixel. The values in each box indicate what portion of each pixel should be used to produce the output. The case shown here is the most boring possible kernel. It uses all of the current pixel and none of the neighbors. Applying this kernel would leave the image unchanged.</p>
+<p>Here’s the most basic kernel for applying a box blur:</p>
+<p><a href="http://www.flickr.com/photos/unavoidablegrain/9308406751/" title="box_blur_1 by atduskgreg, on Flickr"><img src="http://farm8.staticflickr.com/7360/9308406751_743f0403e8.jpg" width="250" height="250" alt="box_blur_1"/></a></p>
+<p>This kernel makes the pixel into an average of itself and each of the eight neighboring pixels. In other words, each of the nine pixels in the kernel contribute 1/9th of the final value.</p>
+<p>We describe this as a kernel size of one since it includes one pixel in each direction away from the current pixel. If we wanted to blur the image more, we could expand the size of our kernel, adding in more adjacent pixels.</p>
+<p>Here’s a kernel for a 2-pixel box blur:</p>
+<p><a href="http://www.flickr.com/photos/unavoidablegrain/9311189812/" title="box_blur_2 by atduskgreg, on Flickr"><img src="http://farm6.staticflickr.com/5328/9311189812_5453efcec8.jpg" width="250" height="250" alt="box_blur_2"/></a></p>
+<p>Expanding to a 2-pixel radius results in a kernel that covers 25 pixels. Hence, each pixel contributes 1/25th of our final value.</p>
+<p>The GIF at the top of this page showed a blur with a 10-pixel kernel. Here’s what a blur with a 50-pixel radius kernel looks like: </p>
+<p><img src="http://gregborenstein.com/assets/opencv/blur_more.gif" width="500px"/></p>
+<p>In addition to kernels that mix all the pixels equally, we can use other kernels that have different effects. For example, we could construct a kernel that only mixed-in the pixels on the same row as the current pixel like so:</p>
+<p><a href="http://www.flickr.com/photos/unavoidablegrain/9311189846/" title="horizontal_blur by atduskgreg, on Flickr"><img src="http://farm3.staticflickr.com/2830/9311189846_8a36612889.jpg" width="250" height="250" alt="horizontal_blur"/></a></p>
+<p>The result would be a horizontal blur like this:</p>
+<p><img src="http://gregborenstein.com/assets/opencv/blur_horizontal.gif" width="500px"/></p>
+<p>And likewise, we could do the same thing in the vertical direction with this kernel:</p>
+<p><a href="http://www.flickr.com/photos/unavoidablegrain/9308406767/" title="vertical_blur by atduskgreg, on Flickr"><img src="http://farm6.staticflickr.com/5533/9308406767_1eb8f3c1a0.jpg" width="250" height="250" alt="vertical_blur"/></a></p>
+<p>producing something like this:</p>
+<p><img src="http://gregborenstein.com/assets/opencv/blur_vertical.gif" width="500px"/></p>
+<section data-type="sect2" data-pdf-bookmark="Color Images" id="idp700224">
+<h2>Color Images</h2>
+
+<p>It’s also worth noting that, unlike some other filters, <code>blur()</code> can be applied to color images:</p>
+<p><img src="http://gregborenstein.com/assets/opencv/blur_color.gif" width="500px"/></p>
+</section>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Parameters" id="idp403152">
+<h1>Parameters</h1>
+
+<p>OpenCV for Processing’s <code>blur()</code> function has two different forms. Passing a single argument applies a simple box blur to the image with a kernel size determined by the argument you pass in.</p>
+<pre data-type="programlisting">opencv.blur(10);</pre>
+<p>To blur an image vertically or horizontally, you need to create a non-square kernel. The second form of <code>blur()</code> takes two arguments: one for the size of the kernel in the x- and y-dimensions.</p>
+<pre data-type="programlisting">opencv.blur(5, 1);</pre>
+<p>would apply a horizontal blur with the kernel we showed above: five pixels wide, all on the same row.</p>
+<pre data-type="programlisting">opencv.blur(1,5);</pre>
+<p>would apply a vertical blur: one pixel wide and five tall, just like we saw in the vertical kernel.</p>
+<p>Neither argument to this function can be zero, or an error will be raised. How can you construct a kernel that takes up zero rows or zero columns?</p>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Related Functions" id="idp709808">
+<h1>Related Functions</h1>
+
+<ul>
+<li><a href="https://github.com/atduskgreg/opencv-processing-book/blob/master/book/filters/dilate_erode.md">dilate()</a></li>
+<li><a href="https://github.com/atduskgreg/opencv-processing-book/blob/master/book/filters/dilate_erode.md">erode()</a></li>
+</ul>
+</section>
+</section>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+	<div class="row">
+	  <div class="pagination">
+	      <ul>
+	        <li class="prev"><span class="fa fa-chevron-left"/> <a href="ch01.html">Previous</a></li>
+	        <li class="next"><a href="ch03.html">Next</a> <span class="fa fa-chevron-right"/></li>
+	      </ul>
+	  </div>       
+	</div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12 disqus">
+	     <div id="disqus_thread"/>
+	   </div>
+       </div>
+    </div>
+ 
+    <div class="footer">
+      <footer>
+        <p>© O'Reilly Media, 2014</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
