@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>OpenCV Processing Book</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+   <script type="text/javascript" src="theme/html/javascripts/disqus.js"> </script>
+
+   <link rel="stylesheet" href="theme/html/stylesheets/atlas.css"/>
+
+
+  </head>
+
+  <body data-type="book">
+
+    <div class="navbar navbar-fixed-top" role="navigation">	
+      <div class="container">
+        <div class="navbar-header">	
+	  <img class="logo" src="theme/html/assets/logo-white.svg"/>
+          <a class="title" href="#">OpenCV Processing Book</a>
+        </div>
+
+	<div id="slideout">
+	    <span class="toc-control fa fa-bars"/>
+	    <div id="slideout_inner">
+		 <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+	            <div class="input-group-btn">
+	               <button class="btn btn-default search-button" type="submit"><span class="fa fa-search"/></button>
+	            </div>
+	         </div>   
+	        <h2>Contents</h2>
+	        <nav data-type="toc" id="idp89424"><ol><li data-type="chapter"><a href="ch01.html#idp493232">Filters: Basic Output</a></li><li data-type="chapter"><a href="ch02.html#idm1279744">Filters: Blur</a><ol>
+
+
+
+
+<li data-type="sect1"><a href="ch02.html#idp550560">Blur Strength and Direction - Convolutions and Kernels</a><ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-type="sect2"><a href="ch02.html#idp845296">Color Images</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch02.html#idp546208">Parameters</a></li>
+<li data-type="sect1"><a href="ch02.html#idp852656">Related Functions</a></li>
+</ol></li><li data-type="chapter"><a href="ch03.html#idp858368">Filters: Brightness and Contrast</a></li><li data-type="chapter"><a href="ch04.html#idp859552">Filters: Dilate and Erode</a></li><li data-type="chapter"><a href="ch05.html#idp860064">Filters: Edge Detection</a><ol>
+
+
+
+<li data-type="sect1"><a href="ch05.html#idp866960">Canny Edge Detection</a></li>
+<li data-type="sect1"><a href="ch05.html#idp876112">Sobel Edge Detection</a><ol>
+
+
+
+
+<li data-type="sect2"><a href="ch05.html#idp876528">Parameters</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch05.html#idp885552">Scharr Edge Detection</a></li>
+</ol></li><li data-type="chapter"><a href="ch06.html#idp890352">Filters: Histogram Equalization</a></li><li data-type="chapter"><a href="ch07.html#idp897728">Filters: In Range</a><ol>
+
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch07.html#idp914176">Use with Color Images and the Hue Channel</a></li>
+<li data-type="sect1"><a href="ch07.html#idp917024">Parameters</a></li>
+<li data-type="sect1"><a href="ch07.html#idp919680">Related Material</a></li>
+</ol></li><li data-type="chapter"><a href="ch08.html#idp905568">Filters: Region of Interest</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch08.html#idp934672">Combined with Histogram Equalization</a></li>
+<li data-type="sect1"><a href="ch08.html#idp930832">Parameters</a></li>
+</ol></li><li data-type="chapter"><a href="ch09.html#idp940048">Filters: Threshold</a><ol>
+
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch09.html#idp944512">Related Functions</a></li>
+<li data-type="sect1"><a href="ch09.html#idp949056">Parameters</a></li>
+<li data-type="sect1"><a href="ch09.html#idp951664">Code</a></li>
+</ol></li><li data-type="chapter"><a href="ch10.html#idp953744">Filters: Adaptive Threshold</a><ol>
+
+
+<li data-type="sect1"><a href="ch10.html#idp954608">Related Functions</a></li>
+</ol></li><li data-type="chapter"><a href="ch11.html#idp958432">Tracking: Background Subtraction</a><ol>
+
+
+
+<li data-type="sect1"><a href="ch11.html#idp960016">Video Script</a></li>
+<li data-type="sect1"><a href="ch11.html#idp963344">Video Summary</a></li>
+<li data-type="sect1"><a href="ch11.html#idp964720">Quiz</a></li>
+<li data-type="sect1"><a href="ch11.html#idp978960">Code</a><ol>
+
+
+<li data-type="sect2"><a href="ch11.html#idp976464">Important Functions</a></li>
+<li data-type="sect2"><a href="ch11.html#idp985024">Browse the Code</a></li>
+</ol></li>
+</ol></li><li data-type="chapter"><a href="ch12.html#idp986368">Tracking: Track the Brightest Point</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch12.html#idp988592">Video Summary</a><ol>
+
+
+
+<li data-type="sect2"><a href="ch12.html#idp990880">Luma: A More Accurate Measure of Brightness</a></li>
+</ol></li>
+<li data-type="sect1"><a href="ch12.html#idp1003024">Quiz</a></li>
+<li data-type="sect1"><a href="ch12.html#idp1012656">Code</a><ol>
+
+
+<li data-type="sect2"><a href="ch12.html#idp1018480">Important Functions</a></li>
+<li data-type="sect2"><a href="ch12.html#idp1017984">Browse the Code</a></li>
+</ol></li>
+</ol></li><li data-type="chapter"><a href="ch13.html#idp1021872">Tracking: Finding Contours and Lines</a><ol>
+
+
+<li data-type="sect1"><a href="ch13.html#idp1023712">Video Script</a></li>
+<li data-type="sect1"><a href="ch13.html#idp1026320">Video Summary</a></li>
+<li data-type="sect1"><a href="ch13.html#idp1027456">Quiz</a></li>
+<li data-type="sect1"><a href="ch13.html#idp1028784">Code</a><ol>
+
+
+<li data-type="sect2"><a href="ch13.html#idp1029760">Important Functions</a></li>
+<li data-type="sect2"><a href="ch13.html#idp1035632">Browse the Code</a></li>
+</ol></li>
+</ol></li><li data-type="chapter"><a href="ch14.html#idp1036768">Tracking: Face Detection</a><ol>
+
+
+
+
+
+
+<li data-type="sect1"><a href="ch14.html#idp1039968">Video Summary</a></li>
+<li data-type="sect1"><a href="ch14.html#idp1057120">The Politics of Face Detection</a></li>
+<li data-type="sect1"><a href="ch14.html#idp1058528">Quiz</a></li>
+<li data-type="sect1"><a href="ch14.html#idp1080976">Code</a><ol>
+
+
+<li data-type="sect2"><a href="ch14.html#idp1082032">Important Functions</a></li>
+<li data-type="sect2"><a href="ch14.html#idp1086608">Browse the Code</a></li>
+</ol></li>
+</ol></li><li data-type="chapter"><a href="ch15.html#idp1089776">Tracking: Color Tracking in HSV Color Space</a><ol>
+
+
+
+
+
+<li data-type="sect1"><a href="ch15.html#idp1093280">Video Summary</a></li>
+<li data-type="sect1"><a href="ch15.html#idp1105888">Quiz</a></li>
+<li data-type="sect1"><a href="ch15.html#idp1109392">Code</a><ol>
+
+
+
+<li data-type="sect2"><a href="ch15.html#idp1111296">Important Functions</a></li>
+<li data-type="sect2"><a href="ch15.html#idp1117136">Browse the Code</a></li>
+</ol></li>
+</ol></li></ol></nav>
+	    </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <section data-type="chapter" data-pdf-bookmark="Chapter 14. Tracking: Face Detection" id="idp1036768">
+<h1>Tracking: Face Detection</h1>
+
+<p><em>Detecting faces in images is one of the most ubiquitous applications of computer vision. We see it in our digital cameras for autofocus, on our social networks to identify our friends, in public surveillance systems, and many other places. In this project, we’ll learn how to detect faces using OpenCV. We’ll see a little bit about how the face detection process works, how it can fail, and how we can apply it to detect other things besides just faces.</em></p>
+<iframe src="http://player.vimeo.com/video/69907695" width="1000" height="562" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""> </iframe>
+
+<p><em>Video and images from Adam Harvey’s <a href="http://cvdazzle.com">CV Dazzle</a> used with permission. Clock photo by <a href="http://www.flickr.com/photos/jaqian/7292320/">jaqian</a> and pedestrian photo by <a href="http://www.flickr.com/photos/gandalfcunningham/2527870434/">gandalphcunningham</a>.</em></p>
+<section data-type="sect1" data-pdf-bookmark="Video Summary" id="idp1039968">
+<h1>Video Summary</h1>
+
+<ul>
+<li>Face detection in OpenCV is easy to use.</li>
+<li>It is necessary to learn about how it is implemented in order to use it effectively and understand its limitations.</li>
+<li>OpenCV’s face detector uses the Viola-Jones algorithm, originally introduced in the 2001 paper <a href="http://www.merl.com/papers/docs/TR2004-043.pdf">Rapid Object Detection Using a Boosted
+Cascade of Simple Features</a>.</li>
+<li>Viola-Jones works by matching a defined series of patterns of light and dark rectangles to different areas of the image at different scales.</li>
+<li>Faces have a consistent arrangement of highlights and shadows based on how light falls on the facial features.</li>
+<li>Viola-Jones can be trained to recognize these patterns.</li>
+<li>The training process requires a large set of input images and takes a long time and a lot of computing resources.</li>
+<li>The training process produces a “cascade” file (usually stored as XML), which can be loaded into OpenCV for realtime detection.</li>
+<li>The most commonly used cascade is for frontal faces.</li>
+<li>Artist Adam Harvey’s <a href="http://cvdazzle.com">CV Dazzle</a> project consists of makeup designed to camouflage the wearer from Viola-Jones face detection.</li>
+<li>CV Dazzle works by introducing dark and light patches onto the face where the Viola-Jones frontal face cascade does not expect them to be.</li>
+<li>Harvey produced <a href="https://vimeo.com/34545827">visualizations</a> that illustrate how the Viola-Jones detection process works.</li>
+<li>For more about CV Dazzle and how the Viola-Jones algorithm works, see <a href="http://makematics.com/research/viola-jones/">this Makematics interview with Adam Harvey</a>.</li>
+<li>Viola-Jones can detect multiple faces.</li>
+<li>Find more faces will slow down the processing of each image.</li>
+<li>Viola-Jones can also be used to detect other objects than faces.</li>
+<li>Researchers have created cascades for noses, ears, pedestrians, clock faces, and many other objects.</li>
+</ul>
+</section>
+<section data-type="sect1" data-pdf-bookmark="The Politics of Face Detection" id="idp1057120">
+<h1>The Politics of Face Detection</h1>
+
+<p>Face detection brings out strong, sometimes contradictory, reactions in people. It triggers our fear of being observed, of surveillance by governments, corporations, and others figures of authority. In response to these fears, there’s something of a tradition of creative projects that produce inventive ways of avoiding face detection.</p>
+<p>Beyond Adam Harvey’s CV Dazzle, demonstrated above, artists <a href="http://kylemcdonald.net">Kyle McDonald</a> and <a href="http://datenform.de/">Aram Bartholl</a> of the <a href="http://fffff.at/">F.A.T Lab collective</a> created a video on "<a href="http://fffff.at/how-to-avoid-facial-recognition/">How To Avoid Facial Recognition</a>"</p>
+<iframe src="http://player.vimeo.com/video/41861212" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""> </iframe> 
+
+<p>Very different in style and tone from CV Dazzle, the combination of humor and punk rock attitude in this video simultaneously expresses and mocks the idea of face detection as a form of technological oppression. </p>
+<p>At the end of the video McDonald and Bartholl demonstrate that most face detection systems fail if the face is tilted by more than 15 degrees or so. This is a practical concern when using OpenCV’s face detection functions. It can be overcome by rotating the image before processing, but that technique is computationally expensive and rarely done.</p>
+<p>In addition to the fear of being observed by face detection systems, there’s a different kind of fear in being invisible to them.</p>
+<p>In 2009, two employees of a computer store uploaded a video called <a href="http://www.youtube.com/watch?v=t4DT3tQqgRM">HP Computers are Racist</a> in which they demonstrated an HP MediaSmart computer failing to track the face of a black man, but succeeding on a white woman.</p>
+<iframe width="420" height="315" src="//www.youtube.com/embed/t4DT3tQqgRM" frameborder="0" allowfullscreen=""> </iframe>
+
+<p><a href="http://www.pcmag.com/article2/0,2817,2357429,00.asp">HP responded</a> to the video by explaining the technical roots of the problem and insisting it wasn’t intentional:</p>
+<blockquote>
+<p>“The technology we use is built on standard algorithms that measure the difference in intensity of contrast between the eyes and the upper cheek and nose. We believe that the camera might have difficulty ’seeing’ contrast in conditions where there is insufficient foreground lighting.”</p>
+</blockquote>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Quiz" id="idp1058528">
+<h1>Quiz</h1>
+
+<p>Q: Which of the following conditions will not make OpenCV face detection run faster: A) A smaller input image. B) Fewer faces present in the image. C) Good lighting.</p>
+<p class="pop btn" href="#" rel="popover" title="Answer" data-content="C, good lighting.">Reveal the Answer</p>
+
+<p>Q: Is it easier to detect objects with a cascade or to train a new cascade?</p>
+<p class="pop btn" href="#" rel="popover" title="Answer" data-content="Detect. Training is difficult and computationally expensive.">Reveal the Answer</p>
+
+<p>Q: What is the minimum angle of orientation that will cause the frontal face cascade to fail to detect the face?</p>
+<p class="pop btn" href="#" rel="popover" title="Answer" data-content="15 degrees.">Reveal the Answer</p>
+
+</section>
+<section data-type="sect1" data-pdf-bookmark="Code" id="idp1080976">
+<h1>Code</h1>
+
+<section data-type="sect2" data-pdf-bookmark="Important Functions" id="idp1082032">
+<h2>Important Functions</h2>
+
+<ul>
+<li><code>opencv.loadCascade()</code> - Setup for face tracking (or other cascade-based tracking).</li>
+<li><code>OpenCV.CASCADE_FRONTALFACE_ALT</code> - A constant referring to the standard cascade for detecting faces. Pass this to <code>opencv.loadCascade()</code> to setup for face detection.</li>
+<li><code>opencv.detect()</code> - Detect objects in the current image based on the configured cascade. Returns an array of Rectangle objects.</li>
+</ul>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Browse the Code" id="idp1086608">
+<h2>Browse the Code</h2>
+
+<ul>
+<li>Detect faces in video</li>
+<li>Scaling trick to do it faster</li>
+<li>Detect clocks with a different cascade</li>
+</ul>
+</section>
+</section>
+</section>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+	<div class="row">
+	  <div class="pagination">
+	      <ul>
+	        <li class="prev"><span class="fa fa-chevron-left"/> <a href="ch13.html">Previous</a></li>
+	        <li class="next"><a href="ch15.html">Next</a> <span class="fa fa-chevron-right"/></li>
+	      </ul>
+	  </div>       
+	</div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12 disqus">
+	     <div id="disqus_thread"/>
+	   </div>
+       </div>
+    </div>
+ 
+    <div class="footer">
+      <footer>
+        <p>© O'Reilly Media, 2014</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
