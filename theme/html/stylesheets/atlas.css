@@ -72,6 +72,9 @@ body {
   list-style-type:none;
 }
 
+.pagination a {
+	color: white;
+}
 .pagination .next {
 	text-align: right;
 }
